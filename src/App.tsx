@@ -1,5 +1,5 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react'
-import { ArrowUp, ArrowUpRight, Glasses, Monitor, Smartphone, Tablet } from 'lucide-react'
+import { ArrowUp, Glasses, Monitor, Smartphone, Tablet } from 'lucide-react'
 import {
   motion,
   useScroll,
@@ -96,15 +96,6 @@ function FadeIn({ children, delay = 0, duration = 0.7, x = 0, y = 30, className 
     >
       {children}
     </motion.div>
-  )
-}
-
-function ContactButton() {
-  return (
-    <a className="contact-button" href="mailto:hello@example.com">
-      Contact Me
-      <ArrowUpRight size={18} strokeWidth={2} />
-    </a>
   )
 }
 
@@ -340,9 +331,6 @@ function HeroSection() {
         <FadeIn delay={0.35} y={20}>
           <HeroDesignMeta />
         </FadeIn>
-        <FadeIn delay={0.5} y={20}>
-          <ContactButton />
-        </FadeIn>
       </div>
     </section>
   )
@@ -350,7 +338,7 @@ function HeroSection() {
 
 function SereneSlide({ active }: { active: boolean }) {
   return (
-    <section className="serene-slide" aria-label="Serene landing page slide">
+    <section className="serene-slide" aria-label="Portfolio vision landing page slide">
       <video className="serene-video" src={active ? sereneAssets.video : undefined} autoPlay={active} muted loop playsInline preload="none" />
       <div className="serene-overlay" />
 
@@ -360,14 +348,13 @@ function SereneSlide({ active }: { active: boolean }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: neuralEase }}
       >
-        <a className="serene-logo" href="#hero">Serene</a>
+        <a className="serene-logo" href="#hero">AFEE Portfolio</a>
         <nav>
           <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Journal</a>
+          <a href="#services">Ability</a>
+          <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="serene-consult" href="#contact">Book a consultation</a>
         <button className="serene-menu" type="button" aria-label="Open menu">
           <span />
           <span />
@@ -381,9 +368,8 @@ function SereneSlide({ active }: { active: boolean }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.28, duration: 0.95, ease: neuralEase }}
       >
-        <h2>Gentle touch. Radiant presence.</h2>
-        <p>Expert beauty and holistic wellness, delivered with warmth and intention.</p>
-        <a className="serene-cta" href="#contact">Begin your renewal</a>
+        <h2>Multi-terminal experiences. Intelligent visual systems.</h2>
+        <p>UI/UX, AI design, brand systems, and enterprise product cases shaped for manufacturing, digital twin, XR interaction, and B-end platforms.</p>
       </motion.div>
 
       <motion.aside
@@ -396,9 +382,9 @@ function SereneSlide({ active }: { active: boolean }) {
         <img className="serene-cloud serene-cloud-left" src={sereneAssets.cloud} alt="" />
         <img className="serene-cloud serene-cloud-right" src={sereneAssets.cloud} alt="" />
         <blockquote>
-          “Serene was founded on a belief in beauty that honors your nature. No rushing, no excess -- just support that lets you feel radiant.”
+          “A portfolio focused on connecting users, scenarios, and future-facing systems through precise visual language and scalable design assets.”
         </blockquote>
-        <p>Dr. Mia Callahan -- Founder</p>
+        <p>Afee -- UI / UX Designer</p>
       </motion.aside>
 
       <div className="serene-sound" aria-hidden="true">
@@ -414,7 +400,7 @@ function HeroCarousel() {
   const [paused, setPaused] = useState(false)
   const [progressKey, setProgressKey] = useState(0)
   const pauseTimerRef = useRef<number | null>(null)
-  const slides = ['Creator Portfolio', 'Serene'] as const
+  const slides = ['Creator Portfolio', 'Portfolio Vision'] as const
 
   useEffect(() => {
     if (paused) return undefined
