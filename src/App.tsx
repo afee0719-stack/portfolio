@@ -1,5 +1,34 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react'
-import { ArrowUp, Glasses, Monitor, Smartphone, Tablet } from 'lucide-react'
+import {
+  Activity,
+  ArrowRight,
+  ArrowUp,
+  Bot,
+  Box,
+  Brush,
+  Check,
+  ChevronRight,
+  Cpu,
+  Glasses,
+  Image as ImageIcon,
+  Layers3,
+  LayoutGrid,
+  Library,
+  Monitor,
+  Palette,
+  PenTool,
+  Rocket,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Tablet,
+  Target,
+  Users,
+  WandSparkles,
+  Workflow,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react'
 import {
   motion,
   useScroll,
@@ -302,8 +331,33 @@ function HeroSection() {
       <div className="hero-cn-title-wrap">
         <FadeIn delay={0.28} y={28} className="hero-cn-title-motion">
           <div className="hero-cn-title">
-            <p>连接用户·场景与未来</p>
-            <h2>多端多场景设计</h2>
+            <div className="hero-cn-orbit" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </div>
+            <div className="hero-cn-kicker">
+              <span />
+              <p>连接用户 · 场景与未来</p>
+              <span />
+            </div>
+            <h2 aria-label="多端多场景体验设计">
+              <span className="hero-cn-line hero-cn-line-top" data-text="多端多场景">多端多场景</span>
+              <span className="hero-cn-line hero-cn-line-bottom">
+                <b>体验</b>
+                <em>设计</em>
+              </span>
+            </h2>
+            <div className="hero-cn-tech-meta">
+              <span>一致 <i /> 高效 <i /> 智能 <i /> 融合</span>
+              <small>MULTI-PLATFORM / MULTI-SCENARIO EXPERIENCE DESIGN</small>
+            </div>
+            <div className="hero-cn-corners" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+              <i />
+            </div>
           </div>
         </FadeIn>
       </div>
@@ -724,7 +778,7 @@ function ServicesSection() {
 const projects = [
   {
     number: '01',
-    category: '悟空智能点检设备',
+    category: '悟空智能点检',
     name: 'AR Industrial Inspection System',
     actions: [{ href: '#wukong-device', label: 'View Case' }],
     images: [wukongArScreens, wukongCover, wukongArScreens],
@@ -885,8 +939,8 @@ function WukongProjectPage() {
         <section className="wukong-hero-grid">
           <div className="wukong-hero-copy">
             <p>AR 工业巡检系统</p>
-            <h1>悟空智能点检设备</h1>
-            <span>Wukong Intelligent Inspection Device</span>
+            <h1>悟空智能点检</h1>
+            <span>Wukong Intelligent Inspection</span>
             <p className="wukong-hero-desc">融合 AR 点检、设备识别、数据透视、分步巡检、异常协作与报告闭环，以“悟空·火眼金睛”为核心理念，让巡检更高效、更智能、更可靠。</p>
             <div className="wukong-hero-actions">
               <a href="#wukong-case-body">View Case</a>
@@ -894,7 +948,7 @@ function WukongProjectPage() {
             </div>
           </div>
           <div className="wukong-hero-visual">
-            <img src={wukongArScreens} alt="悟空智能点检设备 AR 巡检界面" />
+            <img src={wukongArScreens} alt="悟空智能点检 AR 巡检界面" />
           </div>
         </section>
         <div className="wukong-spec-strip">
@@ -911,7 +965,7 @@ function WukongProjectPage() {
         <div className="wukong-case-cover">
           <div>
             <span>01</span>
-            <h2>悟空智能点检设备</h2>
+            <h2>悟空智能点检</h2>
             <p>以高解像 AR 光波导折射算法为基础，自动贴合复杂核电/化工设备参数，辅助现场人员完成识别、巡检、协作与报告闭环。</p>
             <div className="wukong-feature-pills">
               {features.map((feature) => (
@@ -919,7 +973,6 @@ function WukongProjectPage() {
               ))}
             </div>
           </div>
-          <img src={wukongCover} alt="悟空智能点检设备封面展示" />
         </div>
 
         <div className="wukong-case-sections">
@@ -933,9 +986,642 @@ function WukongProjectPage() {
         </div>
 
         <div className="wukong-long-shot">
-          <img src={wukongCaseLong} alt="悟空智能点检设备完整项目长图" loading="lazy" />
+          <img src={wukongCaseLong} alt="悟空智能点检完整项目长图" loading="lazy" />
         </div>
       </section>
+    </main>
+  )
+}
+
+type ADesignInteractiveItem = {
+  title: string
+  label: string
+  description: string
+  icon: LucideIcon
+  points: readonly string[]
+}
+
+const adesignBackgroundItems: readonly ADesignInteractiveItem[] = [
+  {
+    title: '统一视觉规范',
+    label: 'SYSTEM STANDARD',
+    description: '建立统一的视觉规则与体验基线，让跨系统、跨团队的设计语言保持一致。',
+    icon: Target,
+    points: ['设计原则', '栅格与版式', '交互基线'],
+  },
+  {
+    title: '沉淀组件资产',
+    label: 'ASSET LIBRARY',
+    description: '把高频模式沉淀为可复用组件，减少重复设计并提升交付稳定性。',
+    icon: Layers3,
+    points: ['基础组件', '业务组件', '页面模板'],
+  },
+  {
+    title: '支撑多业务线',
+    label: 'SCALABLE SYSTEM',
+    description: '以可扩展架构承接不同业务场景，让规范与效率在规模化中持续生效。',
+    icon: Workflow,
+    points: ['多业务适配', '权限协同', '版本管理'],
+  },
+  {
+    title: '塑造品牌体验',
+    label: 'BRAND EXPERIENCE',
+    description: '将品牌识别融入每一个操作触点，形成专业、可靠且一致的产品印象。',
+    icon: ShieldCheck,
+    points: ['品牌一致性', '品质控制', '体验度量'],
+  },
+]
+
+const adesignCapabilityItems: readonly ADesignInteractiveItem[] = [
+  {
+    title: '规范 / 组件共享',
+    label: 'DESIGN SYSTEM',
+    description: '统一设计规则、组件状态与交付标准，构建设计资产的共同语言。',
+    icon: Layers3,
+    points: ['Token 变量', '组件文档', '版本追踪'],
+  },
+  {
+    title: '主题定制 / 样式参考',
+    label: 'THEME ENGINE',
+    description: '通过品牌主题与场景模板，快速生成稳定且可扩展的界面风格。',
+    icon: Palette,
+    points: ['主题切换', '样式映射', '品牌预设'],
+  },
+  {
+    title: 'AI 自助绘图',
+    label: 'AIGC WORKFLOW',
+    description: '把提示词、模型与素材流程整合进工作台，降低创意生产门槛。',
+    icon: WandSparkles,
+    points: ['智能生图', '批量变体', '结果管理'],
+  },
+  {
+    title: '模板 / 素材 / 模型广场',
+    label: 'CREATIVE MARKET',
+    description: '集中管理模板、素材与模型能力，让优质资产被发现、复用和持续迭代。',
+    icon: LayoutGrid,
+    points: ['模板中心', '素材检索', '模型管理'],
+  },
+]
+
+const adesignShowcaseItems: readonly ADesignInteractiveItem[] = [
+  {
+    title: '规范与组件共享',
+    label: 'LIBRARY',
+    description: '按业务域浏览组件、规范与更新记录，快速定位可复用资产。',
+    icon: Library,
+    points: ['32 个组件族', '126 个状态', '实时版本同步'],
+  },
+  {
+    title: 'AI 自助绘图',
+    label: 'AI STUDIO',
+    description: '通过结构化提示词和风格预设，生成可直接进入设计流程的视觉内容。',
+    icon: Bot,
+    points: ['提示词模板', '风格控制', '批量生成'],
+  },
+  {
+    title: '模板与素材广场',
+    label: 'MARKET',
+    description: '聚合高质量页面模板与品牌素材，支持收藏、筛选和一键复用。',
+    icon: ImageIcon,
+    points: ['智能筛选', '资产收藏', '一键复用'],
+  },
+  {
+    title: '主题与品牌管理',
+    label: 'BRAND KIT',
+    description: '集中维护颜色、字体、圆角与阴影等品牌变量，并预览全局影响。',
+    icon: Brush,
+    points: ['主题预览', '变量映射', '全局发布'],
+  },
+]
+
+const adesignStrategyItems: readonly ADesignInteractiveItem[] = [
+  {
+    title: '规范化',
+    label: 'STANDARDIZATION',
+    description: '建立唯一规则源，让设计、研发和业务对同一标准形成共识。',
+    icon: ShieldCheck,
+    points: ['定义标准', '团队评审', '持续维护'],
+  },
+  {
+    title: '组件化',
+    label: 'COMPONENTIZATION',
+    description: '将成熟模式转化为高复用资产，在统一中保留业务扩展能力。',
+    icon: Box,
+    points: ['模式抽象', '组件建设', '场景验证'],
+  },
+  {
+    title: '品质化',
+    label: 'QUALITY UPGRADE',
+    description: '通过检查清单与体验度量，持续提升产品的一致性和完成度。',
+    icon: Sparkles,
+    points: ['体验巡检', '质量评分', '问题闭环'],
+  },
+  {
+    title: '品牌化',
+    label: 'BRAND IDENTITY',
+    description: '把品牌基因注入设计系统，使产品体验成为品牌资产的一部分。',
+    icon: Rocket,
+    points: ['识别提炼', '规则映射', '体验沉淀'],
+  },
+]
+
+const adesignValueItems: readonly ADesignInteractiveItem[] = [
+  {
+    title: '统一体验',
+    label: 'CONSISTENCY',
+    description: '同一套原则覆盖跨端、跨系统和跨业务的核心体验。',
+    icon: Check,
+    points: ['统一标准', '统一语言', '统一质量'],
+  },
+  {
+    title: '提升效率',
+    label: 'EFFICIENCY',
+    description: '减少重复劳动，让团队把时间投入到真正需要解决的问题。',
+    icon: Zap,
+    points: ['复用提速', '自动检查', '快速交付'],
+  },
+  {
+    title: '强化协作',
+    label: 'COLLABORATION',
+    description: '用共享资产和透明流程连接设计、研发与业务团队。',
+    icon: Users,
+    points: ['在线共创', '版本可见', '反馈闭环'],
+  },
+  {
+    title: '提升品牌',
+    label: 'BRAND VALUE',
+    description: '用持续一致的数字体验建立专业、可信赖的品牌认知。',
+    icon: Activity,
+    points: ['品牌识别', '体验记忆', '资产复利'],
+  },
+]
+
+const adesignImpactItems = [
+  ['40%', '重复设计周期缩短', '通过组件复用与模板化生产减少重复工作。'],
+  ['10.6 万', '单项目节省成本', '统一交付标准，降低沟通、返工与研发适配成本。'],
+  ['84.8 万/年', '设计资产价值', '让组件、模板与规范持续产生可复用的业务价值。'],
+  ['80-100 万', '年度协作价值', '通过跨团队共建与规模化应用释放组织效能。'],
+] as const
+
+const adesignFutureItems = [
+  ['设计智能化', '将 AI 能力嵌入资产检索、生成、检查与决策流程。'],
+  ['协同自动化', '连接设计与研发数据，让版本、规范和变更自动同步。'],
+  ['开放服务化', '把设计能力封装为服务，灵活支撑更多业务场景。'],
+  ['安全可信化', '建立模型、素材与设计资产的权限和质量治理体系。'],
+] as const
+
+function ADesignSectionTitle({
+  number,
+  label,
+  title,
+  description,
+  inverse = false,
+}: {
+  number: string
+  label: string
+  title: string
+  description: string
+  inverse?: boolean
+}) {
+  return (
+    <div className={`adesign-section-title${inverse ? ' is-inverse' : ''}`}>
+      <span>{number}</span>
+      <div>
+        <p>{label}</p>
+        <h2>{title}</h2>
+        <strong>{description}</strong>
+      </div>
+    </div>
+  )
+}
+
+function ADesignPlatformPage() {
+  const [activeBackground, setActiveBackground] = useState(0)
+  const [activeCapability, setActiveCapability] = useState(0)
+  const [activeShowcase, setActiveShowcase] = useState(0)
+  const [activeStrategy, setActiveStrategy] = useState(0)
+  const [activeValue, setActiveValue] = useState(0)
+  const [activeImpact, setActiveImpact] = useState(0)
+  const [activeFuture, setActiveFuture] = useState(0)
+
+  const background = adesignBackgroundItems[activeBackground]
+  const capability = adesignCapabilityItems[activeCapability]
+  const showcase = adesignShowcaseItems[activeShowcase]
+  const strategy = adesignStrategyItems[activeStrategy]
+  const value = adesignValueItems[activeValue]
+
+  return (
+    <main className="adesign-page">
+      <header className="adesign-hero">
+        <nav className="adesign-top-nav">
+          <a href="#projects">← Back Projects</a>
+          <span>ADESIGN PLATFORM CASE</span>
+        </nav>
+
+        <div className="adesign-hero-grid">
+          <FadeIn className="adesign-hero-copy" y={24}>
+            <p>AI 内容创作设计平台</p>
+            <h1 aria-label="ADesign 自建 AIGC 设计平台">
+              <span>ADesign</span>
+              <small>自建 <em>AIGC</em> 设计平台</small>
+            </h1>
+            <strong>规范统一 · 组件共享 · 品质升级 · 品牌塑造</strong>
+            <p>围绕设计资产生产、管理与协作，构建覆盖规范、组件、模板与 AI 能力的一体化平台。</p>
+            <a href="#adesign-background">
+              Explore the system
+              <ArrowRight size={16} />
+            </a>
+          </FadeIn>
+
+          <FadeIn className="adesign-platform-visual" delay={0.12} x={28} y={0}>
+            <div className="adesign-visual-orbit" aria-hidden="true" />
+            <div className="adesign-core-stack">
+              <span>A</span>
+              <small>{capability.label}</small>
+            </div>
+            <div className="adesign-floating-tools" role="group" aria-label="核心能力快捷切换">
+              {adesignCapabilityItems.map((item, index) => {
+                const Icon = item.icon
+                return (
+                  <button
+                    className={activeCapability === index ? 'is-active' : ''}
+                    type="button"
+                    onClick={() => setActiveCapability(index)}
+                    aria-label={`切换到${item.title}`}
+                    key={item.title}
+                  >
+                    <Icon size={19} />
+                  </button>
+                )
+              })}
+            </div>
+          </FadeIn>
+        </div>
+
+        <div className="adesign-hero-features">
+          {adesignCapabilityItems.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <button
+                className={activeCapability === index ? 'is-active' : ''}
+                type="button"
+                onClick={() => setActiveCapability(index)}
+                key={item.title}
+              >
+                <Icon size={20} />
+                <span>{item.title}</span>
+              </button>
+            )
+          })}
+        </div>
+      </header>
+
+      <nav className="adesign-anchor-nav" aria-label="ADesign 案例章节导航">
+        {[
+          ['01', '背景', '#adesign-background'],
+          ['02', '能力', '#adesign-capabilities'],
+          ['03', '展示', '#adesign-showcase'],
+          ['04', '策略', '#adesign-strategy'],
+          ['05', '价值', '#adesign-value'],
+          ['06', '展望', '#adesign-future'],
+        ].map(([number, label, href]) => (
+          <a href={href} key={number}>
+            <span>{number}</span>
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <section className="adesign-section adesign-background-section" id="adesign-background">
+        <FadeIn>
+          <ADesignSectionTitle
+            number="01"
+            label="BACKGROUND"
+            title="项目背景"
+            description="从单点设计交付走向可持续的设计资产体系。"
+          />
+        </FadeIn>
+        <div className="adesign-background-grid" role="tablist" aria-label="项目背景目标">
+          {adesignBackgroundItems.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <button
+                className={activeBackground === index ? 'is-active' : ''}
+                type="button"
+                role="tab"
+                aria-selected={activeBackground === index}
+                onClick={() => setActiveBackground(index)}
+                key={item.title}
+              >
+                <Icon size={28} />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{item.title}</h3>
+                <ChevronRight size={18} />
+              </button>
+            )
+          })}
+        </div>
+        <motion.div
+          className="adesign-background-detail"
+          key={background.title}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: neuralEase }}
+          aria-live="polite"
+        >
+          <div>
+            <span>{background.label}</span>
+            <h3>{background.title}</h3>
+            <p>{background.description}</p>
+          </div>
+          <div>
+            {background.points.map((point) => <span key={point}>{point}</span>)}
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="adesign-section adesign-capability-section" id="adesign-capabilities">
+        <FadeIn>
+          <ADesignSectionTitle
+            number="02"
+            label="CORE CAPABILITIES"
+            title="核心能力"
+            description="让规范、主题、AI 与设计资产在同一个工作流中协同。"
+            inverse
+          />
+        </FadeIn>
+        <div className="adesign-capability-tabs" role="tablist" aria-label="核心能力切换">
+          {adesignCapabilityItems.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <button
+                className={activeCapability === index ? 'is-active' : ''}
+                type="button"
+                role="tab"
+                aria-selected={activeCapability === index}
+                onClick={() => setActiveCapability(index)}
+                key={item.title}
+              >
+                <Icon size={22} />
+                <span>{String.fromCharCode(65 + index)}.</span>
+                {item.title}
+              </button>
+            )
+          })}
+        </div>
+        <motion.div
+          className="adesign-capability-stage"
+          key={capability.title}
+          initial={{ opacity: 0, scale: 0.985 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, ease: neuralEase }}
+        >
+          <div className="adesign-capability-diagram" aria-hidden="true">
+            <div className="adesign-diagram-ring is-outer" />
+            <div className="adesign-diagram-ring is-inner" />
+            <div className="adesign-diagram-core">
+              {(() => {
+                const Icon = capability.icon
+                return <Icon size={34} />
+              })()}
+              <span>{capability.label}</span>
+            </div>
+            {capability.points.map((point, index) => (
+              <span className={`adesign-diagram-node node-${index + 1}`} key={point}>{point}</span>
+            ))}
+          </div>
+          <div className="adesign-capability-copy">
+            <span>{capability.label}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.description}</p>
+            <ul>
+              {capability.points.map((point) => (
+                <li key={point}><Check size={15} />{point}</li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="adesign-section adesign-showcase-section" id="adesign-showcase">
+        <FadeIn>
+          <ADesignSectionTitle
+            number="03"
+            label="INTERFACE SHOWCASE"
+            title="页面展示"
+            description="选择不同能力，实时查看对应的工作台状态。"
+          />
+        </FadeIn>
+        <div className="adesign-showcase-layout">
+          <div className="adesign-showcase-tabs" role="tablist" aria-label="页面展示切换">
+            {adesignShowcaseItems.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <button
+                  className={activeShowcase === index ? 'is-active' : ''}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeShowcase === index}
+                  onClick={() => setActiveShowcase(index)}
+                  key={item.title}
+                >
+                  <Icon size={20} />
+                  <span>{item.title}<small>{item.label}</small></span>
+                  <ChevronRight size={17} />
+                </button>
+              )
+            })}
+          </div>
+          <motion.div
+            className={`adesign-workbench theme-${activeShowcase + 1}`}
+            key={showcase.title}
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35, ease: neuralEase }}
+          >
+            <div className="adesign-workbench-bar">
+              <span /><span /><span />
+              <strong>{showcase.label}</strong>
+              <button type="button" aria-label="工作台更多选项">•••</button>
+            </div>
+            <div className="adesign-workbench-body">
+              <aside>
+                <span className="is-logo">A</span>
+                {[LayoutGrid, Layers3, PenTool, Cpu].map((Icon, index) => (
+                  <button className={index === activeShowcase ? 'is-active' : ''} type="button" aria-label={`工具 ${index + 1}`} key={index}>
+                    <Icon size={17} />
+                  </button>
+                ))}
+              </aside>
+              <div className="adesign-workbench-canvas">
+                <header>
+                  <div><span>{showcase.label}</span><h3>{showcase.title}</h3></div>
+                  <button type="button"><Sparkles size={15} />新建资产</button>
+                </header>
+                <div className="adesign-canvas-grid">
+                  {showcase.points.map((point, index) => (
+                    <article key={point}>
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <div><i /><i /><i /></div>
+                      <strong>{point}</strong>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="adesign-section adesign-strategy-section" id="adesign-strategy">
+        <FadeIn>
+          <ADesignSectionTitle
+            number="04"
+            label="DESIGN STRATEGY"
+            title="设计策略"
+            description="以规范为起点，让设计资产持续升级并形成品牌价值。"
+          />
+        </FadeIn>
+        <div className="adesign-strategy-track" role="tablist" aria-label="设计策略步骤">
+          {adesignStrategyItems.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <button
+                className={activeStrategy === index ? 'is-active' : ''}
+                type="button"
+                role="tab"
+                aria-selected={activeStrategy === index}
+                onClick={() => setActiveStrategy(index)}
+                key={item.title}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <Icon size={25} />
+                <strong>{item.title}</strong>
+                <small>{item.label}</small>
+              </button>
+            )
+          })}
+        </div>
+        <motion.div
+          className="adesign-strategy-detail"
+          key={strategy.title}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35 }}
+        >
+          <div><span>{strategy.label}</span><h3>{strategy.title}</h3><p>{strategy.description}</p></div>
+          <ol>
+            {strategy.points.map((point, index) => (
+              <li key={point}><span>{index + 1}</span>{point}</li>
+            ))}
+          </ol>
+        </motion.div>
+      </section>
+
+      <section className="adesign-section adesign-value-section" id="adesign-value">
+        <FadeIn>
+          <ADesignSectionTitle
+            number="05"
+            label="DESIGN VALUE"
+            title="价值输出"
+            description="把设计系统从规范文档转化为可衡量、可复用的组织能力。"
+          />
+        </FadeIn>
+        <div className="adesign-value-layout">
+          <div className="adesign-value-options" role="tablist" aria-label="设计价值切换">
+            {adesignValueItems.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <button
+                  className={activeValue === index ? 'is-active' : ''}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeValue === index}
+                  onClick={() => setActiveValue(index)}
+                  key={item.title}
+                >
+                  <Icon size={23} />
+                  <span>{item.title}<small>{item.label}</small></span>
+                </button>
+              )
+            })}
+          </div>
+          <motion.div
+            className="adesign-value-focus"
+            key={value.title}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35 }}
+          >
+            <span>{String(activeValue + 1).padStart(2, '0')}</span>
+            <div><small>{value.label}</small><h3>{value.title}</h3><p>{value.description}</p></div>
+            <ul>{value.points.map((point) => <li key={point}><Check size={15} />{point}</li>)}</ul>
+          </motion.div>
+        </div>
+
+        <div className="adesign-impact" aria-label="设计价值指标">
+          {adesignImpactItems.map(([metric, label, description], index) => (
+            <button
+              className={activeImpact === index ? 'is-active' : ''}
+              type="button"
+              onClick={() => setActiveImpact(index)}
+              key={metric}
+            >
+              <span>{metric}</span>
+              <strong>{label}</strong>
+              <i><span style={{ width: activeImpact === index ? '100%' : `${70 + index * 7}%` }} /></i>
+              <p>{description}</p>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="adesign-section adesign-future-section" id="adesign-future">
+        <div className="adesign-future-copy">
+          <FadeIn>
+            <ADesignSectionTitle
+              number="06"
+              label="FUTURE OUTLOOK"
+              title="设计展望"
+              description="让规范与智能共同演进，构建企业设计协同的新基础设施。"
+            />
+          </FadeIn>
+          <div className="adesign-future-options" role="tablist" aria-label="未来能力方向">
+            {adesignFutureItems.map(([title], index) => (
+              <button
+                className={activeFuture === index ? 'is-active' : ''}
+                type="button"
+                role="tab"
+                aria-selected={activeFuture === index}
+                onClick={() => setActiveFuture(index)}
+                key={title}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>{title}
+              </button>
+            ))}
+          </div>
+          <motion.p
+            key={adesignFutureItems[activeFuture][0]}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {adesignFutureItems[activeFuture][1]}
+          </motion.p>
+        </div>
+        <div className="adesign-future-orbit" aria-hidden="true">
+          <div className="adesign-future-ring ring-1" />
+          <div className="adesign-future-ring ring-2" />
+          <span>A</span>
+          {[Sparkles, Workflow, Rocket, ShieldCheck].map((Icon, index) => (
+            <i className={`future-node node-${index + 1}${activeFuture === index ? ' is-active' : ''}`} key={index}><Icon size={20} /></i>
+          ))}
+        </div>
+      </section>
+
+      <footer className="adesign-footer">
+        <div><span>ADesign</span><p>In-house AIGC Design Platform Case Study</p></div>
+        <a href="#projects">Back to projects <ArrowRight size={17} /></a>
+      </footer>
     </main>
   )
 }
@@ -978,61 +1664,17 @@ function DesignAssetCasePage({
 }
 
 function DigitalTwinProjectPage() {
-  const modules = [
-    ['01', '园区总览', '联动建筑、能耗、设备与安防数据，构建统一可视化指挥视图。'],
-    ['02', '设备监控', '沉淀设备运行、告警、维修与产线效率指标，辅助现场决策。'],
-    ['03', '安全管理', '融合人员权限、区域风险和异常事件，实现园区安全闭环。'],
-    ['04', '数据分析', '通过指标看板与趋势分析，支持管理层进行持续优化。'],
-  ] as const
-  const [activeModule, setActiveModule] = useState(0)
-  const active = modules[activeModule]
+  const [scrollWindow, setScrollWindow] = useState<Window | null>(null)
 
   return (
-    <main className="digital-twin-page">
-      <header className="digital-twin-hero">
-        <nav className="digital-twin-nav">
-          <a href="#projects">← Back Projects</a>
-          <span>FOXC0NN DIGITAL TWIN CASE</span>
-        </nav>
-        <section className="digital-twin-intro">
-          <div>
-            <p>Smart Industrial Campus Digital Twin Platform</p>
-            <h1>数字孪生·智能厂区</h1>
-            <span>连接管理、设备与数据，驱动更高效、更可靠的园区治理。</span>
-          </div>
-          <div className="digital-twin-panel">
-            <strong>{active[0]}</strong>
-            <h2>{active[1]}</h2>
-            <p>{active[2]}</p>
-            <div className="digital-twin-module-tabs" role="tablist" aria-label="数字孪生模块切换">
-              {modules.map(([number, title], index) => (
-                <button
-                  className={activeModule === index ? 'active' : ''}
-                  type="button"
-                  onClick={() => setActiveModule(index)}
-                  aria-selected={activeModule === index}
-                  role="tab"
-                  key={number}
-                >
-                  <span>{number}</span>
-                  {title}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-      </header>
-
-      <section className="digital-twin-case-body">
-        <div className="digital-twin-metrics">
-          {['全局监控', '设备联动', '风险预警', '数据驾驶舱'].map((item) => (
-            <button type="button" key={item}>{item}</button>
-          ))}
-        </div>
-        <div className="digital-twin-long-shot">
-          <img src={digitalTwinParkCase} alt="数字孪生智能厂区完整项目长图" />
-        </div>
-      </section>
+    <main className="digital-twin-embed-page">
+      <iframe
+        className="digital-twin-embed"
+        src="/digital-twin/index.html"
+        title="厂区数字孪生运营平台完整案例"
+        onLoad={(event) => setScrollWindow(event.currentTarget.contentWindow)}
+      />
+      <BackToTopButton scrollTarget={scrollWindow} />
     </main>
   )
 }
@@ -1191,48 +1833,58 @@ function FloatingNavigation() {
   )
 }
 
-function BackToTopButton() {
+function BackToTopButton({ scrollTarget }: { scrollTarget?: Window | null }) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     let frame = 0
+    const targetWindow = scrollTarget ?? window
 
     const updateVisible = () => {
       frame = 0
-      const hero = document.getElementById('hero')
-      const threshold = hero ? hero.offsetTop + hero.offsetHeight - 80 : window.innerHeight * 0.9
-      setVisible(window.scrollY >= threshold)
+      const hero = targetWindow.document.getElementById('hero')
+      const threshold = hero ? hero.offsetTop + hero.offsetHeight - 80 : targetWindow.innerHeight * 0.9
+      setVisible(targetWindow.scrollY >= threshold)
     }
 
     const onScroll = () => {
       if (frame) return
-      frame = window.requestAnimationFrame(updateVisible)
+      frame = targetWindow.requestAnimationFrame(updateVisible)
     }
 
     updateVisible()
-    const deferredUpdate = window.setTimeout(updateVisible, 80)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    window.addEventListener('hashchange', onScroll)
+    const deferredUpdate = targetWindow.setTimeout(updateVisible, 80)
+    targetWindow.addEventListener('scroll', onScroll, { passive: true })
+    targetWindow.addEventListener('resize', onScroll)
+    targetWindow.addEventListener('hashchange', onScroll)
 
     return () => {
-      window.clearTimeout(deferredUpdate)
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      window.removeEventListener('hashchange', onScroll)
-      if (frame) window.cancelAnimationFrame(frame)
+      targetWindow.clearTimeout(deferredUpdate)
+      targetWindow.removeEventListener('scroll', onScroll)
+      targetWindow.removeEventListener('resize', onScroll)
+      targetWindow.removeEventListener('hashchange', onScroll)
+      if (frame) targetWindow.cancelAnimationFrame(frame)
     }
-  }, [])
+  }, [scrollTarget])
 
   return (
     <button
       className={`back-to-top-button ${visible ? 'is-visible' : ''}`}
       type="button"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => (scrollTarget ?? window).scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Back to top"
     >
       <ArrowUp size={20} strokeWidth={2.4} />
     </button>
+  )
+}
+
+function ProjectDetailShell({ children }: { children: ReactNode }) {
+  return (
+    <>
+      {children}
+      <BackToTopButton />
+    </>
   )
 }
 
@@ -1246,30 +1898,24 @@ export default function App() {
   }, [])
 
   if (hash === '#wukong-device') {
-    return <WukongProjectPage />
+    return <ProjectDetailShell><WukongProjectPage /></ProjectDetailShell>
   }
 
-  if (hash === '#adesign-platform') {
-    return (
-      <DesignAssetCasePage
-        label="ADESIGN PLATFORM CASE"
-        title="ADesign 自建 AIGC 设计平台"
-        subtitle="AI 内容创作设计平台"
-        description="围绕规范统一、组件共享、品质升级与品牌塑造，构建设计资产生产、管理与协作的一体化平台。"
-        image={adesignPlatformCase}
-      />
-    )
+  if (hash.startsWith('#adesign-')) {
+    return <ProjectDetailShell><ADesignPlatformPage /></ProjectDetailShell>
   }
 
   if (hash === '#b-icon-library') {
     return (
-      <DesignAssetCasePage
-        label="B-END ICON LIBRARY CASE"
-        title="B端图标库"
-        subtitle="Icon Library"
-        description="面向企业级 B 端场景沉淀图标规范，覆盖办公协同、人力资源、财务管理、项目生产、系统运维等业务域。"
-        image={bIconLibraryCase}
-      />
+      <ProjectDetailShell>
+        <DesignAssetCasePage
+          label="B-END ICON LIBRARY CASE"
+          title="B端图标库"
+          subtitle="Icon Library"
+          description="面向企业级 B 端场景沉淀图标规范，覆盖办公协同、人力资源、财务管理、项目生产、系统运维等业务域。"
+          image={bIconLibraryCase}
+        />
+      </ProjectDetailShell>
     )
   }
 
@@ -1278,11 +1924,11 @@ export default function App() {
   }
 
   if (hash === '#xiaomi-cockpit') {
-    return <XiaomiCockpitProjectPage />
+    return <ProjectDetailShell><XiaomiCockpitProjectPage /></ProjectDetailShell>
   }
 
   if (hash === '#enterprise-component-system') {
-    return <EnterpriseComponentProjectPage />
+    return <ProjectDetailShell><EnterpriseComponentProjectPage /></ProjectDetailShell>
   }
 
   return (
