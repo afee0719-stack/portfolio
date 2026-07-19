@@ -1,6 +1,7 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react'
 import {
   Activity,
+  ArrowLeft,
   ArrowRight,
   ArrowUp,
   Bot,
@@ -98,7 +99,7 @@ function PortfolioNavigation({ className = '' }: { className?: string }) {
   return (
     <nav className={`portfolio-nav ${className}`} aria-label="Primary navigation">
       <a href="#about">About</a>
-      <a href="#services">Ability</a>
+      <a href="#ability">Ability</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -344,8 +345,8 @@ function HeroSection() {
             <h2 aria-label="多端多场景体验设计">
               <span className="hero-cn-line hero-cn-line-top" data-text="多端多场景">多端多场景</span>
               <span className="hero-cn-line hero-cn-line-bottom">
-                <b>体验</b>
-                <em>设计</em>
+                <b data-text="体验">体验</b>
+                <em data-text="设计">设计</em>
               </span>
             </h2>
             <div className="hero-cn-tech-meta">
@@ -405,7 +406,7 @@ function SereneSlide({ active }: { active: boolean }) {
         <a className="serene-logo" href="#hero">AFEE Portfolio</a>
         <nav>
           <a href="#about">About</a>
-          <a href="#services">Ability</a>
+          <a href="#ability">Ability</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -615,6 +616,14 @@ function AboutSection() {
                 </div>
               </section>
             ))}
+            <a className="about-ability-entry" href="#ability">
+              <i><Sparkles size={19} strokeWidth={2} /></i>
+              <span>
+                <small>ABILITY ARCHIVE</small>
+                <strong>查看个人能力与设计方法</strong>
+              </span>
+              <ArrowRight size={20} strokeWidth={2.2} />
+            </a>
           </FadeIn>
 
           <div className="about-timeline">
@@ -670,7 +679,7 @@ const professionalToolGroups = [
 
 function ServicesSection() {
   return (
-    <section className="services-section" id="services">
+    <section className="services-section" id="ability">
       <div className="ability-starfield" aria-hidden="true">
         {Array.from({ length: 18 }, (_, index) => (
           <span key={index} />
@@ -772,6 +781,23 @@ function ServicesSection() {
         </article>
       </div>
     </section>
+  )
+}
+
+function AbilityPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [])
+
+  return (
+    <main className="ability-page">
+      <header className="ability-page-nav">
+        <a href="#about"><ArrowLeft size={17} strokeWidth={2.3} /> Back About</a>
+        <span>AFEE / ABILITY ARCHIVE</span>
+      </header>
+      <ServicesSection />
+      <BackToTopButton />
+    </main>
   )
 }
 
@@ -1679,6 +1705,13 @@ function DigitalTwinProjectPage() {
   )
 }
 
+const xiaomiHeroParticles = [
+  [7, 22, 0.2, 3], [14, 68, 1.4, 2], [23, 35, 2.1, 4], [31, 82, 0.8, 2],
+  [42, 16, 2.8, 3], [49, 58, 1.1, 2], [58, 29, 3.2, 4], [66, 74, 0.4, 2],
+  [73, 12, 1.9, 3], [79, 47, 3.6, 2], [87, 25, 2.4, 4], [93, 72, 1.2, 2],
+  [11, 88, 3.9, 3], [37, 47, 0.7, 2], [61, 91, 2.9, 3], [89, 89, 1.6, 2],
+] as const
+
 function XiaomiCockpitProjectPage() {
   const modes = [
     ['休息模式', '座舱进入低亮度沉浸状态，联动座椅、氛围灯与屏幕内容。'],
@@ -1692,12 +1725,34 @@ function XiaomiCockpitProjectPage() {
   return (
     <main className="xiaomi-page">
       <header className="xiaomi-hero">
+        <div className="xiaomi-tech-field" aria-hidden="true">
+          <i className="xiaomi-tech-orbit orbit-one" />
+          <i className="xiaomi-tech-orbit orbit-two" />
+          <i className="xiaomi-tech-scan" />
+          {xiaomiHeroParticles.map(([left, top, delay, size], index) => (
+            <span
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+                width: `${size}px`,
+                height: `${size}px`,
+                animationDelay: `${delay}s`,
+              }}
+              key={index}
+            />
+          ))}
+        </div>
         <nav className="xiaomi-nav">
           <a href="#projects">← Back Projects</a>
           <span>XIAOMI SMART COCKPIT CASE</span>
         </nav>
         <section className="xiaomi-intro">
-          <div className="xiaomi-logo-mark">mi</div>
+          <div className="xiaomi-logo-mark">
+            <svg viewBox="0 0 48 48" role="img" aria-label="Xiaomi logo">
+              <path d="M10.5 14h13.4c5.2 0 9.4 4.2 9.4 9.4V34h-5.8V23.8c0-2.2-1.8-4-4-4h-1.6V34h-5.8V19.8h-5.6V34H4.7V14h5.8Z" />
+              <path d="M36.2 14h5.8v5.8h-5.8zM36.2 22.2H42V34h-5.8z" />
+            </svg>
+          </div>
           <p>小米智能驾舱-试设计</p>
           <h1>休息模式方案设计</h1>
           <span>让每一次停车，都成为身心的放松时刻。</span>
@@ -1897,8 +1952,22 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
+  useEffect(() => {
+    if (!['#hero', '#about', '#projects', '#contact'].includes(hash)) return
+
+    const frame = window.requestAnimationFrame(() => {
+      document.querySelector(hash)?.scrollIntoView({ block: 'start' })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [hash])
+
   if (hash === '#wukong-device') {
     return <ProjectDetailShell><WukongProjectPage /></ProjectDetailShell>
+  }
+
+  if (hash === '#ability') {
+    return <AbilityPage />
   }
 
   if (hash.startsWith('#adesign-')) {
@@ -1938,7 +2007,6 @@ export default function App() {
       <HeroCarousel />
       <MarqueeSection />
       <AboutSection />
-      <ServicesSection />
       <ProjectsSection />
       <ContactSection />
     </main>
